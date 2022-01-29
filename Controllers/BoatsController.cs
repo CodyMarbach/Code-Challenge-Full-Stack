@@ -46,7 +46,7 @@ namespace Code_Challenge_Full_Stack.Controllers
         {
             _context.Boats.Add(boat);
             await _context.SaveChangesAsync();
-            return CreatedAtAction("GetBoat", new {id = boat.Id}, boat);
+            return CreatedAtAction("Get", new {id = boat.Id}, boat);
         }
 
         // PUT api/boats/5
