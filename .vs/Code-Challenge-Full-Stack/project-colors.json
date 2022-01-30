@@ -3,14 +3,19 @@
   "ProjectMap": {
     "33e18897-1d58-415b-bf4b-259afd354a21": {
       "ProjectGuid": "33e18897-1d58-415b-bf4b-259afd354a21",
-      "DisplayName": "Code-Challenge-Full-Stack",
+      "DisplayName": "Web API",
       "ColorIndex": 0
     },
     "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "ed5369de-209a-4766-b186-42bd195e6f36": {
+      "ProjectGuid": "ed5369de-209a-4766-b186-42bd195e6f36",
+      "DisplayName": "Web API",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
