@@ -44,6 +44,10 @@ namespace Code_Challenge_Full_Stack.Controllers
         [HttpPost]
         public async Task<ActionResult<Boat>> Post(Boat boat)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             _context.Boats.Add(boat);
             await _context.SaveChangesAsync();
             return CreatedAtAction("Get", new {id = boat.Id}, boat);
@@ -54,6 +58,11 @@ namespace Code_Challenge_Full_Stack.Controllers
         public async Task<IActionResult> Put(int id, Boat boat)
         {
             if(id != boat.Id)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }

@@ -65,6 +65,7 @@ const BoatForm = (props) => {
             label="Boat Name"
             value={values.name}
             onChange={handleInputChange}
+            inputProps={{ maxLength: 32 }}
             {...(errors.name && { error: true, helperText: errors.name })}
           />
         </Grid>
@@ -88,6 +89,7 @@ const BoatForm = (props) => {
             variant="outlined"
             label="Notes"
             value={values.notes}
+            inputProps={{ maxLength: 200 }}
             onChange={handleInputChange} />
         </Grid>
         <Grid item xs={8}>
