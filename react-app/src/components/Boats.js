@@ -10,6 +10,8 @@ import { useToasts } from "react-toast-notifications";
 const Boats = (props) => {
     const [currentId, setCurrentId] = useState(0);
 
+    
+
     useEffect(() => {
         props.fetchAllBoats();
     }, []) //Similar lifecycle to componentDidMount
@@ -63,7 +65,7 @@ const Boats = (props) => {
                     </TableContainer>
                 </Grid>
             </Grid>
-        </Paper>
+        </Paper>        
     );
 };
 

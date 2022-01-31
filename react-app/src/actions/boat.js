@@ -12,7 +12,6 @@ export const fetchAll = () => {
         api.boats().fetchAll()
             .then(
                 response => {
-                    console.log(response);
                     dispatch({
                         type: ACTION_TYPES.FETCH_ALL,
                         payload: response.data
@@ -54,7 +53,7 @@ export const delete_action = (id, onSuccess) => dispatch => {
                 type: ACTION_TYPES.DELETE,
                 payload: id
             })
-            onSuccess();
+            if(onSuccess) onSuccess();
         })
         .catch(err => console.log(err))
 }

@@ -1,5 +1,5 @@
-import { Button, Grid, MenuItem, Select, Stack, TextField } from "@mui/material";
-import React, { useEffect } from "react";
+import { Button, ButtonGroup, Grid, MenuItem, Select, Stack, TextField } from "@mui/material";
+import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/boat";
 import FormHelper from "./FormHelper";
@@ -33,7 +33,6 @@ const BoatForm = (props) => {
 
   const {
     values,
-    setValues,
     handleInputChange,
     errors,
     setErrors,
@@ -48,28 +47,17 @@ const BoatForm = (props) => {
         addToast("Submitted successfully", { appearance: "success" });
         resetForm();
       }
-      if (props.currentId !== 0) {
-        props.updateBoat(props.currentId, values, onSuccess)
-      }
-      else {
-        props.createBoat(values, onSuccess);
-      }
+      props.createBoat(values, onSuccess);
     }
   }
-
-  useEffect(() => {
-    if (props.currentId !== 0) {
-      setValues({
-        ...props.boatList.find(x => x.id === props.currentId)
-      });
-      setErrors({});
-    }
-  }, [props.currentId]);
 
   return (
     <form autoComplete="off" noValidate onSubmit={handleSubmit}>
       <Grid container>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
+          Add new Boat
+        </Grid>
+        <Grid item xs={4}>
           <TextField
             className="Min-Width"
             name="name"
@@ -79,6 +67,8 @@ const BoatForm = (props) => {
             onChange={handleInputChange}
             {...(errors.name && { error: true, helperText: errors.name })}
           />
+        </Grid>
+        <Grid item xs={4}>
           <Select
             className="Min-Width"
             name="status"
@@ -90,6 +80,8 @@ const BoatForm = (props) => {
             <MenuItem value={3}>Inbound</MenuItem>
             <MenuItem value={4}>Repairs</MenuItem>
           </Select>
+        </Grid>
+        <Grid item xs={4}>
           <TextField
             className="Min-Width"
             name="notes"
@@ -98,16 +90,21 @@ const BoatForm = (props) => {
             value={values.notes}
             onChange={handleInputChange} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={8}>
+
+        </Grid>
+        <Grid item xs={4}>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained"
-              color="primary"
-              type="Submit">
-              Submit
-            </Button>
-            <Button variant="contained" color="secondary" onClick={resetForm}>
-              Reset
-            </Button>
+            <ButtonGroup>
+              <Button variant="contained"
+                color="primary"
+                type="Submit">
+                Submit
+              </Button>
+              <Button variant="contained" color="secondary" onClick={resetForm}>
+                Reset
+              </Button>
+            </ButtonGroup>
           </Stack>
         </Grid>
       </Grid>
