@@ -23,7 +23,7 @@ namespace Code_Challenge_Full_Stack
             services.AddControllers();
 
             services.AddDbContext<BoatDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
 
             services.AddCors();
         }
