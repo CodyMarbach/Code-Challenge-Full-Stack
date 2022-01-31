@@ -15,7 +15,12 @@
       "ProjectGuid": "ed5369de-209a-4766-b186-42bd195e6f36",
       "DisplayName": "Web API",
       "ColorIndex": 1
+    },
+    "3eed49b6-4422-43b6-abbd-b225f4253057": {
+      "ProjectGuid": "3eed49b6-4422-43b6-abbd-b225f4253057",
+      "DisplayName": "Web API Tests",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
