@@ -7,20 +7,54 @@ export const ACTION_TYPES = {
     FETCH_ALL: 'FETCH_ALL'
 };
 
-export const fetchAll = () =>
-{
-    return dispatch =>
-    {
+export const fetchAll = () => {
+    return dispatch => {
         api.boats().fetchAll()
-        .then(
-            response => {
-                console.log(response);
-                dispatch({
-                    type: ACTION_TYPES.FETCH_ALL,
-                    payload: response.data
-                })
-            }
-        )
-        .catch(err => console.log(err))        
+            .then(
+                response => {
+                    console.log(response);
+                    dispatch({
+                        type: ACTION_TYPES.FETCH_ALL,
+                        payload: response.data
+                    })
+                }
+            )
+            .catch(err => console.log(err))
     }
+}
+
+export const create = (data, onSuccess) => dispatch => {
+    api.boats().create(data)
+        .then(res => {
+            dispatch({
+                type: ACTION_TYPES.CREATE,
+                payload: res.data
+            })
+            onSuccess();
+        })
+        .catch(err => console.log(err))
+}
+
+export const update = (id, data, onSuccess) => dispatch => {
+    api.boats().update(id, data)
+        .then(res => {
+            dispatch({
+                type: ACTION_TYPES.UPDATE,
+                payload: {id: id, ...data}
+            })
+            onSuccess();
+        })
+        .catch(err => console.log(err))
+}
+
+export const delete_action = (id, onSuccess) => dispatch => {
+    api.boats().delete(id)
+        .then(res => {
+            dispatch({
+                type: ACTION_TYPES.DELETE,
+                payload: id
+            })
+            onSuccess();
+        })
+        .catch(err => console.log(err))
 }
