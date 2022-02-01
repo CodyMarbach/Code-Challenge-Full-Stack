@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Board, { addCard, changeCard, moveCard, removeCard } from '@asseinfo/react-kanban'
 import '@asseinfo/react-kanban/dist/styles.css'
 import * as actions from "../actions/boat";
-import { Paper } from "@mui/material";
+import { Box, CircularProgress, Fade, Paper } from "@mui/material";
 
 const BoatsBoard = (props) => {
     const initialBoard = {
@@ -36,6 +36,7 @@ const BoatsBoard = (props) => {
     };
 
     const [board, setBoard] = useState(initialBoard);
+    const [loading, setLoading] = React.useState(true);
 
     const handleCardMove = (card, source, destination) => {
         const onSuccess = () => {
@@ -69,6 +70,7 @@ const BoatsBoard = (props) => {
     }
 
     useEffect(() => {
+        setLoading(true);
         props.fetchAllBoats();
     }, [])
 
@@ -88,11 +90,25 @@ const BoatsBoard = (props) => {
 
                 setBoard(newBoard);
             }
-        })
+        });
+        if(props.boatList.length > 0) {setLoading(false);}        
     }, [props.boatList])
 
     return (
         <Paper className="Paper Board-Center" elevation={3}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box sx={{ height: 40 }}>
+                    <Fade
+                        in={loading}
+                        style={{
+                            transitionDelay: loading ? '800ms' : '0ms',
+                        }}
+                        unmountOnExit
+                    >
+                        <CircularProgress />
+                    </Fade>
+                </Box>
+            </Box>
             <Board
                 allowRemoveCard
                 disableColumnDrag
