@@ -32,6 +32,7 @@ namespace Code_Challenge_Full_Stack
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins("https://happy-hill-001d40f10.1.azurestaticapps.net").AllowAnyHeader().AllowAnyMethod());
 
             if (env.IsDevelopment())
             {
