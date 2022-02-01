@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://localhost:44362/api/";
+const baseUrl = "https://codymarbprovdemo.azurewebsites.net/api/";
 
 const api = {
     boats(url = baseUrl +"boats/"){

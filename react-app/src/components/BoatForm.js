@@ -72,6 +72,7 @@ const BoatForm = (props) => {
         <Grid item xs={4}>
           <Select
             className="Min-Width"
+            data-testid="select"
             name="status"
             label="Status"
             value={values.status}
@@ -99,11 +100,16 @@ const BoatForm = (props) => {
           <Stack direction="row" spacing={2}>
             <ButtonGroup>
               <Button variant="contained"
+                id="SubmitButton"
                 color="primary"
                 type="Submit">
                 Submit
               </Button>
-              <Button variant="contained" color="secondary" onClick={resetForm}>
+              <Button 
+                id="ResetButton"
+                variant="contained" 
+                color="secondary" 
+                onClick={resetForm}>
                 Reset
               </Button>
             </ButtonGroup>

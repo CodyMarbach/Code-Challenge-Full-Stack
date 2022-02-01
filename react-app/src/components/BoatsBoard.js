@@ -10,25 +10,25 @@ const BoatsBoard = (props) => {
         columns: [
             {
                 id: 1,
-                key: 1,
+                key: 9001,
                 title: "Docked",
                 cards: []
             },
             {
                 id: 2,
-                key: 2,
+                key: 9002,
                 title: "Outbound",
                 cards: []
             },
             {
                 id: 3,
-                key: 3,
+                key: 9003,
                 title: "Inbound",
                 cards: []
             },
             {
                 id: 4,
-                key: 4,
+                key: 9004,
                 title: "Maintenance",
                 cards: []
             }
