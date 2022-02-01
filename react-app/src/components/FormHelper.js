@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FormHelper = (initialFieldValues, validate, setCurrentId) => {
+const FormHelper = (initialFieldValues, validate) => {
     const [values, setValues] = useState(initialFieldValues);
     const [errors, setErrors] = useState({});
 
@@ -19,7 +19,6 @@ const FormHelper = (initialFieldValues, validate, setCurrentId) => {
             ...initialFieldValues
         });
         setErrors({});
-        setCurrentId(0);
     }
 
     return {

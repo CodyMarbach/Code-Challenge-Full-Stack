@@ -37,11 +37,10 @@ const BoatForm = (props) => {
     errors,
     setErrors,
     resetForm
-  } = FormHelper(initialFieldValues, validate, props.setCurrentId);
+  } = FormHelper(initialFieldValues, validate);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(values);
     if (validate()) {
       const onSuccess = () => {
         addToast("Submitted successfully", { appearance: "success" });
