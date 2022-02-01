@@ -25,15 +25,20 @@ namespace Code_Challenge_Full_Stack
             services.AddDbContext<BoatDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000", "https://happy-hill-001d40f10.1.azurestaticapps.net")
+                        .AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
-            app.UseCors(options => options.WithOrigins("https://happy-hill-001d40f10.1.azurestaticapps.net").AllowAnyHeader().AllowAnyMethod());
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
