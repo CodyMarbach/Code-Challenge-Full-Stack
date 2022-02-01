@@ -1,4 +1,5 @@
 ﻿using Code_Challenge_Full_Stack.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -21,6 +22,7 @@ namespace Code_Challenge_Full_Stack.Controllers
 
         // GET: api/boats
         [HttpGet]
+        [EnableCors("OpenPolicy")]
         public async Task<ActionResult<IEnumerable<Boat>>> GetBoats()
         {
             return await _context.Boats.ToListAsync();
@@ -28,6 +30,7 @@ namespace Code_Challenge_Full_Stack.Controllers
 
         // GET api/boats/5
         [HttpGet("{id}")]
+        [EnableCors("OpenPolicy")]
         public async Task<ActionResult<Boat>> Get(int id)
         {
             var boat = await _context.Boats.FindAsync(id);
@@ -42,6 +45,7 @@ namespace Code_Challenge_Full_Stack.Controllers
 
         // POST api/boats
         [HttpPost]
+        [EnableCors("OpenPolicy")]
         public async Task<ActionResult<Boat>> Post(Boat boat)
         {
             if(!ModelState.IsValid)
@@ -55,6 +59,7 @@ namespace Code_Challenge_Full_Stack.Controllers
 
         // PUT api/boats/5
         [HttpPut("{id}")]
+        [EnableCors("OpenPolicy")]
         public async Task<IActionResult> Put(int id, Boat boat)
         {
             if(id != boat.Id)
@@ -90,6 +95,7 @@ namespace Code_Challenge_Full_Stack.Controllers
 
         // DELETE api/boats/5
         [HttpDelete("{id}")]
+        [EnableCors("OpenPolicy")]
         public async Task<ActionResult<Boat>> Delete(int id)
         {
             var boat = await _context.Boats.FindAsync(id);

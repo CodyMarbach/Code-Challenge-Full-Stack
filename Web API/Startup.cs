@@ -33,6 +33,13 @@ namespace Code_Challenge_Full_Stack
                         builder.WithOrigins("http://localhost:3000", "https://happy-hill-001d40f10.1.azurestaticapps.net")
                         .AllowAnyHeader().AllowAnyMethod();
                     });
+
+                options.AddPolicy("OpenPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000", "https://happy-hill-001d40f10.1.azurestaticapps.net")
+                        .AllowAnyHeader().AllowAnyMethod();
+                    });
             });
         }
 
