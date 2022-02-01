@@ -1,5 +1,10 @@
 import api from "./api";
 
+/**
+ * Mapping up each basic API action to the API call logic.
+ * No implementation for single GET at this point, can be added for future needs.
+ */
+
 export const ACTION_TYPES = {
     CREATE: 'CREATE',
     UPDATE: 'UPDATE',

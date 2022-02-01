@@ -17,7 +17,6 @@ namespace Code_Challenge_Full_Stack
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -25,6 +24,7 @@ namespace Code_Challenge_Full_Stack
             services.AddDbContext<BoatDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
 
+            // Configure CORS to allow access from the static web app.
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -43,7 +43,6 @@ namespace Code_Challenge_Full_Stack
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -16,6 +16,7 @@ const BoatForm = (props) => {
   // Toast message
   const { addToast } = useToasts();
 
+  // Support for basic validation to prevent entries with no names.
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ('name' in fieldValues) {
@@ -125,6 +126,7 @@ const mapStateToProps = state => {
   }
 }
 
+// Form does not need get or delete functions.
 const mapActionToProps = {
   createBoat: actions.create,
   updateBoat: actions.update

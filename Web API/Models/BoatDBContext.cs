@@ -12,6 +12,7 @@ namespace Code_Challenge_Full_Stack.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Explicitly tranlate the enum value to an int value in the database.
             modelBuilder.Entity<Boat>()
                 .Property(c => c.Status)
                 .HasConversion<int>();

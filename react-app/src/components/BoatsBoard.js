@@ -6,6 +6,7 @@ import * as actions from "../actions/boat";
 import { Box, CircularProgress, Fade, Paper } from "@mui/material";
 
 const BoatsBoard = (props) => {
+    // Initial board defines columns, attributes on the board prevent adding columns at this time.
     const initialBoard = {
         columns: [
             {
@@ -36,7 +37,7 @@ const BoatsBoard = (props) => {
     };
 
     const [board, setBoard] = useState(initialBoard);
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = useState(true);
 
     const handleCardMove = (card, source, destination) => {
         const onSuccess = () => {
@@ -50,6 +51,9 @@ const BoatsBoard = (props) => {
             onSuccess)
     }
 
+    // This function is required due to maintaining the entire board in the state, to handle all changes and prevent
+    // unexpected results. It does seem to cause minor performance issues with the card blinking back to the original row
+    // due to API / SQL performance speed.
     const moveCardUpdate = (source, destination) => {
         var newBoard = moveCard(board, source, destination);
         setBoard(newBoard);
@@ -64,11 +68,15 @@ const BoatsBoard = (props) => {
         props.deleteBoat(card.id, onSuccess);
     }
 
+    // This function is required due to maintaining the entire board in the state, to handle all changes and prevent
+    // unexpected results. It does seem to cause minor performance issues with the card reappearing briefly
+    // due to API / SQL performance speed.
     const removeCardUpdate = (column, card) => {
         var newBoard = removeCard(board, column, card);
         setBoard(newBoard);
     }
 
+    // This use of useEffect gives similar behavior as componentDidMount
     useEffect(() => {
         setLoading(true);
         props.fetchAllBoats();
@@ -91,6 +99,7 @@ const BoatsBoard = (props) => {
                 setBoard(newBoard);
             }
         });
+        // Disable the loading spinner if we have data
         if(props.boatList.length > 0) {setLoading(false);}        
     }, [props.boatList])
 

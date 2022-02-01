@@ -7,6 +7,8 @@ namespace Code_Challenge_Full_Stack.Models
     {
         [Key]
         public int Id { get; set; }
+
+        // Deliberate choice to have backing datastore be larger, to allow for easier expansion in the future.
         [Column(TypeName = "nvarchar(100)")]
         [Required]
         [StringLength(32)]
